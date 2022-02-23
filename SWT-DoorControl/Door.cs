@@ -9,6 +9,7 @@ namespace SWT_DoorControl
     class Door
     {
         public bool _isOpen { get; set; }
+        public DoorControl doorControl { get; set; }
         public Door()
         {
             _isOpen = false;
@@ -16,10 +17,13 @@ namespace SWT_DoorControl
         public void Open()
         {
             _isOpen = true;
+            doorControl.DoorOpened();
         }
         public void Close()
         {
             _isOpen = false;
+            doorControl.DoorClosed();
         }
+
     }
 }

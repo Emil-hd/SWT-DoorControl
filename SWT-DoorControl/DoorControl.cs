@@ -14,15 +14,26 @@ namespace SWT_DoorControl
         public bool _isValid { get; set; }
         public DoorControl(Door door, EntryNotification entryNotification, UserValidation userValidation)
         {
+            _door = door;
+            _entryNotification = entryNotification;
+            _userValidation = userValidation;
             _isValid = false;
         }
-        public void ValidateEntryRequest(int id)
+        public void RequestEntry(int id)
         {
             _isValid=_userValidation.ValidateEntryRequest(id);
+            if(_isValid)
+            {
+                _entryNotification.NotifyEntryGranted(id);
+            }
         }
         public void DoorOpened()
         {
             _door.Close();
+        }
+        public void DoorClosed()
+        {
+
         }
     }
 }

@@ -10,7 +10,7 @@ namespace SWT_DoorControl
     {
         public void NotifyEntryGranted(int id)
         {
-            Console.WriteLine("Døren er åbnet med Id" + id)
+            Console.WriteLine("Døren er åbnet med Id" + id);
         }
     }
 }
