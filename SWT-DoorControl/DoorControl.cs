@@ -19,7 +19,7 @@ namespace SWT_DoorControl
             _userValidation = userValidation;
             _isValid = false;
         }
-        public void ValidateEntryRequest(int id)
+        public void RequestEntry(int id)
         {
             _isValid=_userValidation.ValidateEntryRequest(id);
             if(_isValid)
