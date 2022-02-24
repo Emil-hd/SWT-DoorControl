@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace SWT_DoorControl
 {
-    class DoorControl:IDoorControl
+    public class DoorControl:IDoorControl
     {
         public IAlarm _alarm;
         public IDoor _door { get; set; }
-        public EntryNotification _entryNotification { get; set; }
-        public UserValidation _userValidation { get; set; }
+        public IEntryNotification _entryNotification { get; set; }
+        public IUserValidation _userValidation { get; set; }
         public bool _isValid { get; set; }
         public bool _isDoorOpen { get; set; }
-        public DoorControl(IDoor door, EntryNotification entryNotification, UserValidation userValidation)
+        public DoorControl(IDoor door, IEntryNotification entryNotification, IUserValidation userValidation)
         {
             _alarm = new Alarm();
             _door = door;
