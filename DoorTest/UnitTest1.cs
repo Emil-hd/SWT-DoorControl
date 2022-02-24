@@ -6,10 +6,12 @@ namespace DoorTest
 {
     public class Tests
     {
+
         private IDoorControl _uut;
         private IUserValidation _userValidation;
         private IDoor _door;
         private IEntryNotification _entryNotification;
+
 
 
         
@@ -35,13 +37,10 @@ namespace DoorTest
         [Test]
         public void AlarmTest_DoorOpened()
         {
+            _uut._isDoorOpen = false;
+            _uut._isValid = false; 
+            _uut.Received(1).DoorOpened();
 
-
-
-
-
-
-            //            Assert
         }
 
 
