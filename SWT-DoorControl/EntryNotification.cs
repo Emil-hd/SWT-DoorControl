@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SWT_DoorControl
 {
-    class EntryNotification
+    class EntryNotification:IEntryNotification
     {
         public void NotifyEntryGranted(int id)
         {
