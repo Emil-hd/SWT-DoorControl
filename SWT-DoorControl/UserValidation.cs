@@ -11,7 +11,15 @@ namespace SWT_DoorControl
 
         public bool ValidateEntryRequest(int id)
         {
-            return true;
+            if(id>=0 && id<=10)
+            {
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
         }
     }
 }
