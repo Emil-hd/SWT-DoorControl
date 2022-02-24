@@ -6,15 +6,9 @@ using System.Threading.Tasks;
 
 namespace SWT_DoorControl
 {
-    public class Alarm : IAlarm
+    public interface IAlarm
     {
-
-        public void RaiseAlarm()
-        {
-            Console.WriteLine("ALARM ALARM!!");
-        }
-
-
+        public void RaiseAlarm(); 
 
 
     }
