@@ -37,11 +37,9 @@ namespace SWT_DoorControl
         }
         public void DoorOpened()
         {
-<<<<<<< HEAD
-            _isDoorOpen = true;
-=======
 
->>>>>>> 003-RaiseAllarmClass
+            _isDoorOpen = true;
+
             _door.Close();
 
             if (_isValid == false)
