@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SWT_DoorControl
 {
-    class Door
+    class Door:IDoor
     {
         public bool _isOpen { get; set; }
         public DoorControl doorControl { get; set; }
