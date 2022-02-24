@@ -1,4 +1,5 @@
 using NSubstitute;
+using NSubstitute.ReceivedExtensions;
 using NUnit.Framework;
 using SWT_DoorControl;
 
@@ -26,5 +27,15 @@ namespace DoorTest
         {
             Assert.Pass();
         }
+
+        [TestCase(12)]
+        [TestCase(-1)]
+        [TestCase(1200000000)]
+        public void RequestEntry_falseid_callEntryNotificationFalseId(int id)
+        {
+            _uut.RequestEntry(id);
+            _entryNotification.Received(1).NotifyEntryDenied(id);
+        }
+
     }
 }
