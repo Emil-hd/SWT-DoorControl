@@ -9,12 +9,14 @@ namespace SWT_DoorControl
     class DoorControl
     {
         public Door _door { get; set; }
+        public IAlarm _alarm;
         public EntryNotification _entryNotification { get; set; }
         public UserValidation _userValidation { get; set; }
         public bool _isValid { get; set; }
         public bool _isDoorOpen { get; set; }
         public DoorControl(Door door, EntryNotification entryNotification, UserValidation userValidation)
         {
+            _alarm = new Alarm();
             _door = door;
             _entryNotification = entryNotification;
             _userValidation = userValidation;
@@ -35,8 +37,18 @@ namespace SWT_DoorControl
         }
         public void DoorOpened()
         {
+<<<<<<< HEAD
             _isDoorOpen = true;
+=======
+
+>>>>>>> 003-RaiseAllarmClass
             _door.Close();
+
+            if (_isValid == false)
+            {
+                _alarm.RaiseAlarm(); 
+            }
+
         }
         public void DoorClosed()
         {
