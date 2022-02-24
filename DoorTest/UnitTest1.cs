@@ -11,6 +11,8 @@ namespace DoorTest
         private IDoor _door;
         private IEntryNotification _entryNotification;
 
+
+        
         [SetUp]
         public void Setup()
         {
@@ -26,5 +28,23 @@ namespace DoorTest
         {
             Assert.Pass();
         }
+
+
+
+
+        [Test]
+        public void AlarmTest_DoorOpened()
+        {
+
+
+
+
+
+
+            //            Assert
+        }
+
+
+
     }
 }

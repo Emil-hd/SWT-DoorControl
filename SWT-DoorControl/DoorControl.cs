@@ -37,7 +37,10 @@ namespace SWT_DoorControl
         }
         public void DoorOpened()
         {
+
             _isDoorOpen = true;
+
+
             _door.Close();
 
             if (_isValid == false)
