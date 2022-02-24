@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace SWT_DoorControl
 {
-    interface IDoorControl
+    public interface IDoorControl
     {
         public IDoor _door { get; set; }
-        public EntryNotification _entryNotification { get; set; }
-        public UserValidation _userValidation { get; set; }
+        public IEntryNotification _entryNotification { get; set; }
+        public IUserValidation _userValidation { get; set; }
         public bool _isValid { get; set; }
         public bool _isDoorOpen { get; set; }
         public void RequestEntry(int id);
