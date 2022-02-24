@@ -37,12 +37,10 @@ namespace SWT_DoorControl
         }
         public void DoorOpened()
         {
-<<<<<<< HEAD
 
             _isDoorOpen = true;
 
-=======
->>>>>>> 005-Stage
+
             _door.Close();
 
             if (_isValid == false)
