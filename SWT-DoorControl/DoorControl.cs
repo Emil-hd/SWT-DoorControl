@@ -30,6 +30,12 @@ namespace SWT_DoorControl
         public void DoorOpened()
         {
             _door.Close();
+
+            if (_isValid == false)
+            {
+                RaiseAlarm();
+            }
+
         }
         public void DoorClosed()
         {
