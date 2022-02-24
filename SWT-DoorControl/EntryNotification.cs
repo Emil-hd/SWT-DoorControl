@@ -12,5 +12,9 @@ namespace SWT_DoorControl
         {
             Console.WriteLine("Døren er åbnet med Id" + id);
         }
+        public void NotifyEntryDenied(int id)
+        {
+            Console.WriteLine("ID " + id + " er ikke gyldigt adgang ikke givet");
+        }
     }
 }
