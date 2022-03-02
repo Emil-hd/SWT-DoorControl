@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SWT_DoorControl
 {
-    public class UserValidation:IUserValidation
+    public class UserValidation
     {
 
         public bool ValidateEntryRequest(int id)

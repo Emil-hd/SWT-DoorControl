@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace SWT_DoorControl
 {
-    public class DoorControl:IDoorControl
+    public class DoorControl: IDoorControl
     {
-        public IAlarm _alarm;
         public IDoor _door { get; set; }
         public IEntryNotification _entryNotification { get; set; }
         public IUserValidation _userValidation { get; set; }
@@ -16,7 +15,6 @@ namespace SWT_DoorControl
         public bool _isDoorOpen { get; set; }
         public DoorControl(IDoor door, IEntryNotification entryNotification, IUserValidation userValidation)
         {
-            _alarm = new Alarm();
             _door = door;
             _entryNotification = entryNotification;
             _userValidation = userValidation;
@@ -39,12 +37,6 @@ namespace SWT_DoorControl
         {
             _isDoorOpen = true;
             _door.Close();
-
-            if (_isValid == false)
-            {
-                _alarm.RaiseAlarm(); 
-            }
-
         }
         public void DoorClosed()
         {
