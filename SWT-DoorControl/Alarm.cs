@@ -8,14 +8,9 @@ namespace SWT_DoorControl
 {
     public class Alarm : IAlarm
     {
-
         public void RaiseAlarm()
         {
             Console.WriteLine("ALARM ALARM!!");
         }
-
-
-
-
     }
 }
