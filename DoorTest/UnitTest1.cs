@@ -18,7 +18,6 @@ namespace DoorTest
             _userValidation = Substitute.For<IUserValidation>();
             _door = Substitute.For<IDoor>();
             _entryNotification = Substitute.For<IEntryNotification>();
-
             _uut = new DoorControl(_door, _entryNotification, _userValidation);
         }
 
@@ -35,15 +34,6 @@ namespace DoorTest
         {
             _uut.RequestEntry(id);
             _entryNotification.Received(1).NotifyEntryDenied(id);
-        }
-
-        [TestCase(true,true)]
-        [TestCase(false,false)]
-        public void RequestEntry_IsValidSetProperly(bool input, bool isValid)
-        {
-            _userValidation.ValidateEntryRequest(Arg.Any<int>()).Returns(input);
-            _uut.RequestEntry(Arg.Any<int>());
-            Assert.That(_uut._isValid,Is.EqualTo(isValid));
         }
     }
 }
