@@ -1,3 +1,4 @@
+using System;
 using NSubstitute;
 using NSubstitute.ReceivedExtensions;
 using NUnit.Framework;
@@ -21,10 +22,13 @@ namespace DoorTest
             _uut = new DoorControl(_door, _entryNotification, _userValidation);
         }
 
-        [Test()]
+        [TestCase]
         public void TestDoorOpen()
         {
+            _uut.DoorOpened();
 
+            Assert.That(_uut._isDoorOpen, Is.EqualTo(true));
+            _door.Received(1).Close();
         }
 
         [TestCase(12)]
