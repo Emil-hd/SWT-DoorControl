@@ -45,5 +45,17 @@ namespace DoorTest
             _uut.RequestEntry(Arg.Any<int>());
             Assert.That(_uut._isValid,Is.EqualTo(isValid));
         }
+
+        [TestCase(true,true)]
+        public void DoorClose_Test(bool isDoorOpen, bool isValid)
+        {
+            _uut._isDoorOpen = isDoorOpen;
+            _uut._isValid = isValid;
+
+            _uut.DoorClosed();
+
+            Assert.That(_uut._isDoorOpen,Is.EqualTo(false));
+            Assert.That(_uut._isValid,Is.EqualTo(false));
+        }
     }
 }
