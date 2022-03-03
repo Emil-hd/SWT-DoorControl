@@ -21,10 +21,10 @@ namespace DoorTest
             _uut = new DoorControl(_door, _entryNotification, _userValidation);
         }
 
-        [Test]
-        public void Test1()
+        [Test()]
+        public void TestDoorOpen()
         {
-            Assert.Pass();
+
         }
     }
 }
