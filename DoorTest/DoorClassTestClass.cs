@@ -14,39 +14,34 @@ namespace DoorTest
     {
 
         private IDoorControl _doorControl;
-        private IUserValidation _userValidation;
         private IDoor _uut;
-        private IEntryNotification _entryNotification;
 
         [SetUp]
         public void Setup()
         {
-            _userValidation = Substitute.For<IUserValidation>();
             _doorControl = Substitute.For<IDoorControl>();
-            _entryNotification = Substitute.For<IEntryNotification>();
-            _uut = new Door();
+            _uut = new Door(_doorControl);
         }
 
         [Test]
         public void TestOpen()
         {
-            Assert.Pass();
+            _uut.Open();
+            
+                _doorControl.Received(1).DoorOpened();
         }
 
+        [Test]
         public void TestClose()
         {
-            Assert.Pass();
+            _uut.Close();
+
+            _doorControl.Received(1).DoorClosed();
+
+
         }
 
-        public void TestOpen()
-        {
-            Assert.Pass();
-        }
 
-        public void TestOpen()
-        {
-            Assert.Pass();
-        }
 
 
 
