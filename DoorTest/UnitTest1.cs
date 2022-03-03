@@ -1,3 +1,4 @@
+using System;
 using NSubstitute;
 using NSubstitute.Core.Arguments;
 using NSubstitute.ReceivedExtensions;
@@ -31,6 +32,14 @@ namespace DoorTest
             _userValidation.ValidateEntryRequest(Arg.Any<int>()).Returns(false);
             _uut.RequestEntry(id);
             _entryNotification.Received(1).NotifyEntryDenied(id);
+        }
+        [TestCase]
+        public void TestDoorOpen()
+        {
+            _uut.DoorOpened();
+
+            Assert.That(_uut._isDoorOpen, Is.EqualTo(true));
+            _door.Received(1).Close();
         }
         [TestCase(11)]
         [TestCase(-1)]
