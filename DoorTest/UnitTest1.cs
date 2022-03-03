@@ -1,4 +1,5 @@
 using NSubstitute;
+using NSubstitute.Core.Arguments;
 using NSubstitute.ReceivedExtensions;
 using NUnit.Framework;
 using SWT_DoorControl;
@@ -21,19 +22,41 @@ namespace DoorTest
             _uut = new DoorControl(_door, _entryNotification, _userValidation);
         }
 
-        [Test]
-        public void Test1()
-        {
-            Assert.Pass();
-        }
-
-        [TestCase(12)]
+        [TestCase(11)]
         [TestCase(-1)]
-        [TestCase(1200000000)]
-        public void RequestEntry_falseid_callEntryNotificationFalseId(int id)
+        [TestCase(int.MaxValue)]
+        [TestCase(int.MinValue)]
+        public void RequestEntry_FalseId_CallEntryNotificationFalseId(int id)
         {
+            _userValidation.ValidateEntryRequest(Arg.Any<int>()).Returns(false);
             _uut.RequestEntry(id);
             _entryNotification.Received(1).NotifyEntryDenied(id);
+        }
+        [TestCase(11)]
+        [TestCase(-1)]
+        [TestCase(int.MaxValue)]
+        [TestCase(int.MinValue)]
+        public void RequestEntry_FalseId_IsValidFalse(int id)
+        {
+            _userValidation.ValidateEntryRequest(Arg.Any<int>()).Returns(false);
+            _uut.RequestEntry(id);
+            Assert.That(_uut._isValid,Is.False);
+        }
+        [TestCase(10)]
+        [TestCase(0)]
+        public void RequestEntry_TrueId_CallEntryNotificationTrueId(int id)
+        {
+            _userValidation.ValidateEntryRequest(Arg.Any<int>()).Returns(true);
+            _uut.RequestEntry(id);
+            _entryNotification.Received(1).NotifyEntryGranted(id);
+        }
+        [TestCase(10)]
+        [TestCase(0)]
+        public void RequestEntry_TrueId_IsValidTrue(int id)
+        {
+            _userValidation.ValidateEntryRequest(Arg.Any<int>()).Returns(true);
+            _uut.RequestEntry(id);
+            Assert.That(_uut._isValid, Is.True);
         }
     }
 }
