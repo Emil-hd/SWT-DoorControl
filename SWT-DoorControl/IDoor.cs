@@ -9,7 +9,7 @@ namespace SWT_DoorControl
     public interface IDoor
     {
         public bool _isOpen { get; set; }
-        public DoorControl doorControl { get; set; }
+        public IDoorControl _doorControl { get; set; }
         public void Open();
 
         public void Close();

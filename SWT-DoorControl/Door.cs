@@ -9,20 +9,21 @@ namespace SWT_DoorControl
     public class Door: IDoor
     {
         public bool _isOpen { get; set; }
-        public DoorControl doorControl { get; set; }
-        public Door()
+        public IDoorControl _doorControl { get; set; }
+        public Door(IDoorControl doorControl)
         {
+            _doorControl = doorControl;
             _isOpen = false;
         }
         public void Open()
         {
             _isOpen = true;
-            doorControl.DoorOpened();
+            _doorControl.DoorOpened();
         }
         public void Close()
         {
             _isOpen = false;
-            doorControl.DoorClosed();
+            _doorControl.DoorClosed();
         }
 
     }
