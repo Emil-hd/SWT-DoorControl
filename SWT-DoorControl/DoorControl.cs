@@ -26,6 +26,7 @@ namespace SWT_DoorControl
             _isValid=_userValidation.ValidateEntryRequest(id);
             if(_isValid)
             {
+                _door.Open();
                 _entryNotification.NotifyEntryGranted(id);
             }
             else if(!_isValid)
